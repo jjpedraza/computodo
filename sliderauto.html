@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--
+  
+-->
+<html>
+    <head>
+        <title>Slider</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="./style.css" rel="stylesheet" type="text/css" />
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+}
+
+input[name="slider-select-element"] {
+    display: none;
+}
+
+#slider-arrows {
+    margin: -10% auto 0 auto;
+    width: 80%;
+}
+
+#slider-box {
+
+    -webkit-transition: all 0.75s ease;
+    -moz-transition: all 0.75s ease;
+    -ms-transition: all 0.75s ease;
+    -o-transition: all 0.75s ease;
+    transition: all 0.75s ease;
+
+    height: 100%;
+    width: 300%;
+}
+
+#slider-container {
+    height: 20%;
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: left;
+    width: 80%;
+}
+
+.element-blue,
+.element-green,
+.element-red {
+    min-height: 400px;
+    max-height: 100%;
+    width: 100%;
+}
+
+.element-blue {
+    background: blue  ;
+}
+
+.element-green {
+    background: green  ;
+}
+
+.element-red {
+    background: red  ;
+}
+
+.slider-element {
+    float: left;
+    width: 33.333%;
+}
+</style>
+
+    </head>
+    <body>
+        
+        <div id="slider"><section>
+            <div id="slider-container">
+                <div id="slider-box">
+                    <div class="slider-element">
+                        <article class="element-red">
+                            
+                        </article>
+                    </div>
+                    <div class="slider-element">
+                        <article class="element-green">
+                            
+                        </article>
+                    </div>
+                    <div class="slider-element">
+                        <article class="element-blue">
+                            
+                        </article>                            
+                    </div>
+            </div>
+           
+        </section></div>          
+        
+
+
+
+
+    </body>
+</html>
