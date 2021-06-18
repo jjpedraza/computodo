@@ -1,5 +1,8 @@
 
 <?php
+
+error_reporting(E_ALL); //<-- para simular produccion
+
 $equipo = $_POST['equipo'];
 $marca = $_POST['marca'];
 $nombre = $_POST['nombre'];
@@ -14,22 +17,8 @@ Correo: '.$correo.'<br>'.
 '======================================================<br>'.$descripcion.'<br>';
 
 
-$para      = 'ventas@computodotampico.com';
-$titulo    = '( '.$equipo.'-'.$marca.' ) '.$nombre;
-$mensaje   =$mensaje;
-
-$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
-$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-
-$cabeceras .= 'To: '.$para.''. "\r\n";
-$cabeceras .= 'From: '.$nombre.' <'.$correo.'>' . "\r\n";
-//$cabeceras .= 'Cc: birthdayarchive@example.com' . "\r\n";
-//$cabeceras .= 'Bcc: birthdaycheck@example.com' . "\r\n";
 
 
-
-
-mail($para, $titulo, $mensaje, $cabeceras);
 ?>
 
 <!DOCTYPE html>
@@ -60,10 +49,56 @@ a {background-color: white; color: #2D518C;
 </style>		
 </head>
 <body>
+<?php
 
 
-GRACIAS <?php echo $nombre; ?>, EN BREVE nos comunicaremos con usted.<br><br><br><br>
-<br>
-<a href="web.php?s=inicio" title="Regresar"> Continuar </a>
+require_once('mailer/PHPMailerAutoload.php');
+
+
+$asunto = $nombre."- ComputodoWeb";
+$replymail = $correo;
+$replymail_name = $nombre;
+
+$mail_dest  = "no-reply@c2250030.ferozo.com";
+$mail_dest_name = "Mensaje de la Pagina Web";
+
+$contenido = $mensaje;
+
+$mail = new PHPMailer;
+	// $mail->isSMTP();
+    // $mail->SMTPDebug = 2; // 0 = off (for production use)// 1 = client messages// 2 = client and server messages
+	$mail->Debugoutput = 'html'; 
+    $mail->Host = 'c2250030.ferozo.com';  // use // $mail->Host = gethostbyname('smtp.gmail.com'); 
+	// $mail->Helo = "c2250030.ferozo.com";
+	$mail->Port = 465; $mail->SMTPSecure = 'tls'; 
+    $mail->SMTPAuth = true; 
+	$mail->Username = "no-reply@c2250030.ferozo.com"; 
+    $mail->Password = "ZL/NtV69mF"; //CUENTA MASTER
+
+	$mail->setFrom('no-reply@c2250030.ferozo.com', $replymail_name); //Quie envia
+	$mail->addReplyTo($replymail, $replymail_name); //Reponder a nombre de 
+	$mail->addAddress($mail_dest, $mail_dest_name); //Set Destinatario
+	$mail->Subject = $asunto;  //Set asunto
+	//$mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__)); //--- PARA AÑADIR CONTENIDO DESDE UN ARCHIVO
+	$mail->msgHTML($contenido);
+    // $mail->Body = $contenido;
+	// $mail->AltBody = 'El mensaje no puede ser entregado, debido a que su cliente de correo no puede leer el formato html';
+
+	$correo_historia="";
+	if ($mail->send()) {
+        // ob_end_clean();
+        echo 'GRACIAS, EN BREVE nos comunicaremos con usted.<br><br><br><br>
+        <br>
+        <a href="web.php?s=inicio" title="Regresar"> Regresar a la Pagina Principal </a>
+        
+        ';
+
+    } else {
+        echo "Hubo un error al enviar el correo".$mail->ErrorInfo;
+        // var_dump($mail);
+    }
+?>
+
+
 </body>
 </html>

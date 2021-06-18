@@ -1,31 +1,83 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="True" name="HandheldFriendly">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="UTF-8">
+		<meta name="description" content="Centro de Servicio autorizado, y Venta de productos informaticos">
+		<meta name="keywords" content="Epson, Brother, Kaiser,Bixolon, Aspel">
+		<meta name="author" content="Sistemas Equicsa S.A de C.V.">
+		<title>COMPUTODO: Tu mejor opcion!</title>
+
+<style>
+body {
+			font-family: sans-serif; font-size: 18px;
+			margin: 0px;
+			padding: 0px;
+			text-align: center;
+			background-image: url("company/back2.jpg");
+			background-repeat:no-repeat;
+			color: white;
+		}
+a {background-color: white; color: #2D518C;
+	padding: 10px; 
+}
+
+</style>		
+</head>
+<body>
+
+
+
 <?php
-$correo = "servicio@equicsa.com.mx";
-$nombre = "Equicsa";
-$asunto = "prueba";
-
-$msg ="<h1>HOLA </h1>";
-$msg = $msg."".$nombre."<br>";
-$msg = $msg."<br>";
-$msg = $msg."Mensaje de prueba<br>";
-$msg = $msg."<img src='http://computodotampico.com/img/banner/epson.jpg'>";
-$msg = $msg."<br>";
-$msg = $msg."<br>";
-$msg = $msg."Pepe Pedraza";
-
-$para      = 'tecnopix@outlook.com';
+require_once('mailer/PHPMailerAutoload.php');
 
 
+$asunto = "Test";
+$replymail = "no-reply@c2250030.ferozo.com";
+$replymail_name = "Computodo";
 
-$cabeceras  = 'MIME-Version: 1.0' . "\r\n";
-$cabeceras .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+$mail_dest  = "no-reply@c2250030.ferozo.com";
+$mail_dest_name = "Mensaje de la Pagina Web";
 
-$cabeceras .= 'To: '.$para.''. "\r\n";
-$cabeceras .= 'From: '.$nombre.' <'.$correo.'>' . "\r\n";
-//$cabeceras .= 'Cc: birthdayarchive@example.com' . "\r\n";
-//$cabeceras .= 'Bcc: birthdaycheck@example.com' . "\r\n";
+$contenido = "Texto de prueba";
 
+$mail = new PHPMailer;
+	// $mail->isSMTP();
+    // $mail->SMTPDebug = 2; // 0 = off (for production use)// 1 = client messages// 2 = client and server messages
+	// $mail->Debugoutput = 'text'; 
+    $mail->Host = 'c2250030.ferozo.com';  // use // $mail->Host = gethostbyname('smtp.gmail.com'); 
+	// $mail->Helo = "c2250030.ferozo.com";
+	$mail->Port = 465; $mail->SMTPSecure = 'tls'; 
+    $mail->SMTPAuth = true; 
+	$mail->Username = "no-reply@c2250030.ferozo.com"; 
+    $mail->Password = "ZL/NtV69mF"; //CUENTA MASTER
 
-mail($para, $asunto, $msg, $cabeceras);
+	$mail->setFrom('no-reply@c2250030.ferozo.com', $replymail_name); //Quie envia
+	$mail->addReplyTo($replymail, $replymail_name); //Reponder a nombre de 
+	$mail->addAddress($mail_dest, $mail_dest_name); //Set Destinatario
+	$mail->Subject = $asunto;  //Set asunto
+	//$mail->msgHTML(file_get_contents('contents.html'), dirname(__FILE__)); //--- PARA AÑADIR CONTENIDO DESDE UN ARCHIVO
+	// $mail->msgHTML($contenido);
+    $mail->Body = $contenido;
+	// $mail->AltBody = 'El mensaje no puede ser entregado, debido a que su cliente de correo no puede leer el formato html';
 
+	$correo_historia="";
+	if ($mail->send()) {
+        ob_end_clean();
+        echo 'GRACIAS, EN BREVE nos comunicaremos con usted.<br><br><br><br>
+        <br>
+        <a href="web.php?s=inicio" title="Regresar"> Continuar </a>
+        
+        ';
+
+    } else {
+        echo "Hubo un error al enviar el correo".$mail->ErrorInfo;
+        var_dump($mail);
+    }
 ?>
+
+
+</body>
+</html>

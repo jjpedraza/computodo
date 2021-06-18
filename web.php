@@ -1,4 +1,6 @@
-<?php require("asset/config/config.php"); ?>
+<?php
+//  require("asset/config/config.php");
+  ?>
 <?php require("asset/config/functions.php"); ?>
 <!DOCTYPE html>
 <html>
@@ -94,7 +96,7 @@
 						<table width="100%" border='0'>
 							<tr>
 								<td valign="middle" align="center" >
-									<div id="centro">
+									<div id="centro"><br>
 										Centro AUTORIZADO de servicio:<br>
 										<img src="img/epson.png">
 										<img src="img/brother.png">

@@ -1,45 +1,56 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta content="True" name="HandheldFriendly">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta charset="UTF-8">
-		<meta name="description" content="Centro de Servicio autorizado, y Venta de productos informaticos">
-		<meta name="keywords" content="Epson, Brother, Kaiser,Bixolon, Aspel">
-		<meta name="author" content="Sistemas Equicsa S.A de C.V.">
-		<title>COMPUTODO: Tu mejor opcion!</title>
+    <meta content="True" name="HandheldFriendly">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="description" content="Centro de Servicio autorizado, y Venta de productos informaticos">
+    <meta name="keywords" content="Epson, Brother, Kaiser,Bixolon, Aspel">
+    <meta name="author" content="Sistemas Equicsa S.A de C.V.">
+    <title>COMPUTODO: Tu mejor opcion!</title>
 
-<style>
-body {
-			font-family: sans-serif; font-size: 100%;
-			margin: 0px;
-			padding: 0px;
-			text-align: center;
-			background-image: url("company/back2.jpg");
-			background-repeat:no-repeat;
-			
-		}
-#pc img {width: 60%;}
-#movil img {width: 100%; display: none;}
-@media only screen and (max-width: 800px) {
-#pc img {width: 60%;}
-#movil img {width: 100%; display: none;}
-			
-		}
-
-@media only screen and (max-width: 500px) {
-#pc img {width: 60%; display: none;}
-#movil img {width: 10%; display: block;}
-}
-</style>		
+    <style>
+        body {
+            font-family: sans-serif;
+            font-size: 100%;
+            margin: 0px;
+            padding: 0px;
+            text-align: center;
+            background-image: url("company/back2.jpg");
+            background-size: cover;
+        }
+        
+        #pc img {
+            width: 60%;
+        }
+        
+        #movil img {
+            width: 100%;
+            display: none;
+        }
+        
+        @media only screen and (max-width: 500px) {
+            #pc img {
+                width: 60%;
+                display: none;
+            }
+            #movil img {
+                width: 10%;
+                display: block;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<a href="web.php?s=inicio">
-	
-	<div id="pc"><img src="img/open.png"></div>
-	<div id="movil"><img src="img/openmovil.png"></div>
-</a>
+    <a href="web.php?s=inicio">
+
+        <div><img style="width:100%;" src="img/open.png"></div>
+
+    </a>
 
 </body>
+
 </html>

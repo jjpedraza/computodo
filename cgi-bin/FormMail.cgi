@@ -36,7 +36,7 @@ $mailprog = '/opt/exim/bin/exim -t';
 # in this field.  This security fix from the last version which allowed      #
 # anyone on any server to use your FormMail script on their web site.        #
 
-@referers = ('mk000786.ferozo.com','computodotampico.com','200.58.111.108');
+@referers = ('c2250030.ferozo.com','computodotampico.com','200.58.111.108');
 
 # @recipients defines the e-mail addresses or domain names that e-mail can   #
 # be sent to.  This must be filled in correctly to prevent SPAM and allow    #
